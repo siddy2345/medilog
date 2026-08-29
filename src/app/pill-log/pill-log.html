@@ -1,0 +1,14 @@
+<button pButton (click)="openDialog()">Add/Edit Pills or Supplements</button>
+<p-dialog [(visible)]="visible" () closeOnEscape="false" closable="false" draggable="false">
+  <app-pill-editor
+    [pillsToCreate]="pillsToCreate()"
+    (onAddEntry)="addEntry()"
+    (onRemoveEntry)="removeEntry($event)"
+  ></app-pill-editor>
+  <ng-template #footer>
+    <button type="button" pButton severity="secondary" variant="outlined" (click)="closeDialog()">
+      Cancel
+    </button>
+    <button type="button" pButton (click)="savePills()">Save</button>
+  </ng-template>
+</p-dialog>

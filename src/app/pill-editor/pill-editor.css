@@ -1,0 +1,15 @@
+.supplement-form {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.add-entry {
+  display: flex;
+  justify-content: center;
+}
+
+.remove-entry-button {
+  height: fit-content;
+  align-self: end;
+}

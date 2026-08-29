@@ -1,0 +1,41 @@
+@for (pill of pillsToCreate(); track $index) {
+  <div class="supplement-form">
+    <div>
+      <label pLabel for="name">Name</label>
+      <input
+        id="name-{{ $index }}"
+        name="name"
+        pInputText
+        placeholder="Vitamin D3"
+        [(ngModel)]="pill.name"
+      />
+    </div>
+
+    <div>
+      <label pLabel for="goal">Goal/Day</label>
+      <p-inputnumber
+        id="goal-{{ $index }}"
+        name="goal"
+        class="number-input"
+        [inputSize]="1"
+        [(ngModel)]="pill.goal"
+      />
+    </div>
+    @if (!$first) {
+      <button
+        class="remove-entry-button"
+        pButton
+        variant="outlined"
+        iconOnly
+        (click)="removeEntry($index)"
+      >
+        <svg data-p-icon="trash"></svg>
+      </button>
+    }
+  </div>
+}
+<div class="add-entry">
+  <button pButton variant="outlined" iconOnly (click)="addEntry()">
+    <svg data-p-icon="plus"></svg>
+  </button>
+</div>

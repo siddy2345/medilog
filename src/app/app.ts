@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { PillLog } from './pill-log/pill-log';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, PillLog],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
