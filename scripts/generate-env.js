@@ -10,6 +10,9 @@ const content = `export const environment = {
 };
 `;
 
-const outPath = path.join(__dirname, '../src/environments/environment.ts');
+const outDir = path.join(__dirname, '../src/environments');
+const outPath = path.join(outDir, 'environment.ts');
+
+fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(outPath, content);
 console.log(`Generated ${outPath}`);
