@@ -1,0 +1,33 @@
+.add-update-reset-buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: 1rem;
+}
+
+.card {
+  width: 30rem;
+  max-width: 100%;
+}
+
+.card-container {
+  margin-top: 1rem;
+}
+
+.card-buttons {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.up-down-buttons {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  justify-self: center;
+}
+
+.card-reset-button {
+  grid-column: 3;
+  justify-self: end;
+}

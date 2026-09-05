@@ -1,5 +1,15 @@
-<button pButton (click)="openDialog()">Add/Edit Pills or Supplements</button>
-<p-dialog [(visible)]="visible" () closeOnEscape="false" closable="false" draggable="false">
+<div class="add-update-reset-buttons">
+  <button pButton (click)="openDialog()">Add/Edit Pills or Supplements</button>
+  <button pButton (click)="resetAll()">Reset all</button>
+</div>
+
+<p-dialog
+  [(visible)]="visible"
+  closeOnEscape="false"
+  closable="false"
+  draggable="false"
+  modal="true"
+>
   <app-pill-editor
     [pillsToCreate]="pillsToCreate()"
     (onAddEntry)="addEntry()"
@@ -12,3 +22,32 @@
     <button type="button" pButton (click)="savePills()">Save</button>
   </ng-template>
 </p-dialog>
+
+@for (pill of pills(); track $index) {
+  <div class="flex justify-center card-container">
+    <p-card class="card" [header]="pill.name">
+      <p class="m-0">Intake: {{ pill.intake }}/{{ pill.goal }}</p>
+      <ng-template #footer>
+        <div class="card-buttons">
+          <div class="up-down-buttons">
+            <button pButton variant="outlined" iconOnly (click)="incrementIntake($index)">
+              <svg data-p-icon="caret-up"></svg>
+            </button>
+            <button pButton variant="outlined" iconOnly (click)="decrementIntake($index)">
+              <svg data-p-icon="caret-down"></svg>
+            </button>
+          </div>
+          <button
+            class="card-reset-button"
+            pButton
+            variant="outlined"
+            iconOnly
+            (click)="resetIntake($index)"
+          >
+            <svg data-p-icon="refresh"></svg>
+          </button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+}
