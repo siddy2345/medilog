@@ -30,7 +30,7 @@
       <ng-template #footer>
         <div class="card-buttons">
           <div class="up-down-buttons">
-            <button pButton variant="outlined" iconOnly (click)="incrementIntake($index)">
+            <button pButton variant="outlined" iconOnly (click)="incrementIntake($index, $event)">
               <svg data-p-icon="caret-up"></svg>
             </button>
             <button pButton variant="outlined" iconOnly (click)="decrementIntake($index)">

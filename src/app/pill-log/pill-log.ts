@@ -7,6 +7,7 @@ import { PillEditor } from '../pill-editor/pill-editor';
 import { CaretDown } from '@primeicons/angular/caret-down';
 import { CaretUp } from '@primeicons/angular/caret-up';
 import { Refresh } from '@primeicons/angular/refresh';
+import { fireConfetti } from './confetti';
 
 @Component({
   imports: [DialogModule, ButtonDirective, PillEditor, CardModule, CaretUp, CaretDown, Refresh],
@@ -56,18 +57,22 @@ export class PillLog {
     this.closeDialog();
   }
 
-  incrementIntake(index: number): void {
+  incrementIntake(index: number, event: MouseEvent): void {
+    let shouldFireConfetti = false;
     this.pills.update((values) => {
-      values[index].intake++;
+      if (values[index].intake < 99) values[index].intake++;
+      shouldFireConfetti = values[index].intake == values[index].goal;
       return values;
     });
 
     this.setToLocalStorage(this.pills());
+
+    if (shouldFireConfetti) fireConfetti(event.clientX, event.clientY);
   }
 
   decrementIntake(index: number): void {
     this.pills.update((values) => {
-      values[index].intake--;
+      if (values[index].intake > 0) values[index].intake--;
       return values;
     });
 
